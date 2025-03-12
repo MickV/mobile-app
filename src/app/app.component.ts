@@ -416,11 +416,11 @@ export class AppComponent {
   ];
 
   private normalizePlayerName(name: string): { normalizedName: string; type: 'CHLOE' | 'MICKAEL' | 'OTHER' } {
-    const lowercaseName = name.toLowerCase().trim();
-    if (lowercaseName.startsWith('chl')) {
+    const upperName = name.toUpperCase();
+    if (upperName.includes('CHL')) {
       return { normalizedName: name.trim(), type: 'CHLOE' };
     }
-    if (lowercaseName.startsWith('mick')) {
+    if (upperName.includes('MICK')) {
       return { normalizedName: name.trim(), type: 'MICKAEL' };
     }
     return { normalizedName: name.trim(), type: 'OTHER' };
@@ -538,7 +538,7 @@ export class AppComponent {
         clearInterval(this.typewriterInterval);
         this.isTextFullyTyped = true;
       }
-    }, 1); // Vitesse de frappe
+    }, 75); // Vitesse de frappe
   }
 
   nextRule() {
